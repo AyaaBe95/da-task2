@@ -176,17 +176,59 @@ class Villa(Residence):
         return super().info()
     
 
-villa1=Villa(25000,150,4,2,111,222)
-villa2=Villa(25000,150,4,2,111,222)
+#villa1=Villa(25000,150,4,2,111,222)
 
-villa1.setRommsCount(3)
-villa1.setFloorsCount(2)
-villa1.setBalkonsCount(2)
-villa1.setGardenHeight(20)
-villa1.setGardenWidth(10)
-villa1.changePrice(66000)
-villa1.setChanges('paint,tree planting')
+#villa1.setRommsCount(3)
+#villa1.setFloorsCount(2)
+#villa1.setBalkonsCount(2)
+#villa1.setGardenHeight(20)
+#villa1.setGardenWidth(10)
+#villa1.changePrice(66000)
+#villa1.setChanges('paint,tree planting')
+#villa1.info()
 
-villa1.info()
+#---------------------------------------------------------
+#child class
 
+class Apartment(Residence):
+    def __init__(self,__price,__size,__roomsCount,__balkonCount,__longitude,__latitude):
+        super().__init__(__price,__size,__roomsCount,__balkonCount,__longitude,__latitude)
+        self.__floorNumber=0
+        self.__apartmentPerFloor=0
 
+    def setFloorNumber(self,num):
+        self.__floorNumber=num
+        
+    def getFloorNumber(self):
+        return self.__floorNumber
+    
+    def setApartmentPerFloor(self,num):
+        self.__apartmentPerFloor=num
+        
+    def getApartmentPerFloor(self):
+        return self.__apartmentPerFloor
+    
+    def info(self):
+        print('This apartment in '+str(self.getFloorNumber()) + ' floor')
+        if(self.getApartmentPerFloor()==1):
+            print('Each floor has '+str(self.getApartmentPerFloor()) + ' appartment') 
+        else:
+            print('Each floor has '+str(self.getApartmentPerFloor()) + ' appartments') 
+        return super().info()
+    
+    def categorizingApartmentAge(self):
+        appartmentAge=self.getApartmentPerAge()
+        if(appartmentAge>=0 and appartmentAge<=5 ):
+            print('This appartment is new')
+        elif(appartmentAge>=6 and appartmentAge<=15):
+            print('This appartment is middle age')
+        elif(appartmentAge>=16 and appartmentAge<=20):
+            print('This appartment is old')
+        elif(appartmentAge>=21):
+            print('This appartment is too old')
+
+appartment1=Apartment(55000,150,3,1,111,222)
+appartment1.setApartmentAge(10)
+appartment1.setApartmentPerFloor(3)
+appartment1.setFloorNumber(2)
+appartment1.info()
