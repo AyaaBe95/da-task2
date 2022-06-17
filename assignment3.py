@@ -93,6 +93,12 @@ class Residence:
             newPrice=difference*pricePerMeter
             total=oldPrice + newPrice
             self.changePrice(total)
+        elif(difference<0 and changePrice==True):
+            newPrice=(difference*pricePerMeter) * -1
+            total = oldPrice - newPrice
+            self.changePrice(total)
+        
+
 
 
 res1=Residence(0,0,0,0,0,0)
@@ -102,6 +108,8 @@ res1.setRommsCount(5)
 res1.setBalkonsCount(1)
 res1.setLocation(longitude=1111,latitude=2222)
 res1.categorizingReseidencePrices()
-res1.changeSize(160,True,10)
+#res1.changeSize(140,False,0)
+res1.changeSize(140,True,0)
+#res1.changeSize(160,True,0)
 res1.info()
 
