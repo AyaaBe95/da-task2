@@ -166,7 +166,11 @@ class Villa(Residence):
         return area
 
     def info(self):
-        print('Villa has '+str(self.getFloorsCount()) + ' floor')
+        if(self.getFloorsCount()==1):
+            print('Villa has '+str(self.getFloorsCount()) + ' floor')
+        else:
+            print('Villa has '+str(self.getFloorsCount()) + ' floors')
+
         print('Garden area is '+str(self.getGardenArea()) + 'mm')
         print('This villa needs some changes:' , self.splitChanges())
         return super().info()
