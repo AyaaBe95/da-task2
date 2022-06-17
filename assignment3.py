@@ -101,15 +101,88 @@ class Residence:
 
 
 
-res1=Residence(0,0,0,0,0,0)
-res1.setPrice(55000)
-res1.setSize(150)
-res1.setRommsCount(5)
-res1.setBalkonsCount(1)
-res1.setLocation(longitude=1111,latitude=2222)
-res1.categorizingReseidencePrices()
+#res1=Residence(0,0,0,0,0,0)
+#res1.setPrice(55000)
+#res1.setSize(150)
+#res1.setRommsCount(5)
+#res1.setBalkonsCount(1)
+#res1.setLocation(longitude=1111,latitude=2222)
+#res1.categorizingReseidencePrices()
 #res1.changeSize(140,False,0)
-res1.changeSize(140,True,0)
+#res1.changeSize(140,True,0)
 #res1.changeSize(160,True,0)
-res1.info()
+#res1.info()
+
+# ----------------------------------------------------------------
+
+class Villa(Residence):
+    def __init__(self,__price,__size,__roomsCount,__balkonCount,__longitude,__latitude):
+        super().__init__(__price,__size,__roomsCount,__balkonCount,__longitude,__latitude)
+        self.__floorsCount=0
+        self.__gardenHeight=0
+        self.__gardenWidth=0
+        self.__changes=''
+
+    # seters and getters
+    def setFloorsCount(self,count):
+        self.__floorsCount=count
+        
+    def getFloorsCount(self):
+        return self.__floorsCount
+
+    def setGardenHeight(self,height):
+        self.__gardenHeight=height
+        
+    def getGardenHeight(self):
+        return self.__gardenHeight
+
+    def setGardenWidth(self,width):
+        self.__gardenWidth=width
+        
+    def getGardenWidth(self):
+        return self.__gardenWidth
+    
+    def setChanges(self,changes):
+        self.__changes=changes
+    
+    def getChanges(self):
+        return self.__changes
+    
+    def splitChanges(self):
+        lowerStr= self.getChanges().lower()
+        splitedStr = lowerStr.split(',')
+        return splitedStr
+
+
+    # calculate the area of garden
+    def getGardenArea(self):
+        height= self.getGardenHeight()
+        width=self.getGardenWidth()
+        area=0
+        if(height==width):
+            area=height*width
+        else:
+            area=2*(height+width)
+        return area
+
+    def info(self):
+        print('Villa has '+str(self.getFloorsCount()) + ' floor')
+        print('Garden area is '+str(self.getGardenArea()) + 'mm')
+        print('This villa needs some changes:' , self.splitChanges())
+        return super().info()
+    
+
+villa1=Villa(25000,150,4,2,111,222)
+villa2=Villa(25000,150,4,2,111,222)
+
+villa1.setRommsCount(3)
+villa1.setFloorsCount(2)
+villa1.setBalkonsCount(2)
+villa1.setGardenHeight(20)
+villa1.setGardenWidth(10)
+villa1.changePrice(66000)
+villa1.setChanges('paint,tree planting')
+
+villa1.info()
+
 
